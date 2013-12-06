@@ -1,0 +1,44 @@
+<script src="js/svg.js"></script>
+<script src="js/export.svg.js"></script>
+<script src="js/dat.gui.min.js"></script>
+<script src="js/fileSaver.js"></script>
+<body>
+
+  <div id="canvas"></div>
+
+</body>
+<script src="js/gears.js"></script>
+<script>
+// create svg image in webpage
+var draw = window.draw = SVG('canvas').size(window.innerWidth, window.innerHeight)
+var gear = new Gear();
+
+  var gui = new dat.GUI();
+  
+  gui.add(gear, 'teeth', 2, 30).step(1).onChange(function(){
+    gear.render(draw);
+  })
+
+  var advanced = gui.addFolder('Advanced');
+
+  advanced.add(gear, 'mm_per_tooth', 1, 100).onChange(function(){
+    gear.render(draw);
+  })
+  advanced.add(gear, 'axle_radius', 1,200).onChange(function(){
+    gear.render(draw);
+  })
+  advanced.add(gear, 'backlash', 0, 20).onChange(function(){
+    gear.render(draw);
+  })
+  advanced.add(gear, 'clearance', 0, 20).onChange(function(){
+    gear.render(draw);
+  })
+  advanced.open();
+
+  gui.add(gear, 'Save_SVG');
+
+  // Draw it 
+  gear.render(draw)
+
+
+</script>
