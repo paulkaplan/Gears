@@ -10,7 +10,7 @@
 <script src="js/gears.js"></script>
 <script>
 // create svg image in webpage
-var draw = window.draw = SVG('canvas').size(window.innerWidth, window.innerHeight)
+var draw = window.draw = SVG('canvas').size(window.innerWidth, window.innerHeight);
 var gear = new Gear();
 
   var gui = new dat.GUI();
@@ -39,6 +39,12 @@ var gear = new Gear();
 
   // Draw it 
   gear.render(draw)
+
+
+  window.onresize = function(){
+    draw.size(window.innerWidth, window.innerHeight);
+    gear.render(draw);
+  }
 
 
 </script>
